@@ -1,9 +1,9 @@
 package RegionsController
 
 import (
-	"go-core/responseCodes"
-	"go-core/services/RegionService"
-	"go-core/utils/response"
+	"golang-core/responseCodes"
+	"golang-core/services/RegionService"
+	"golang-core/utils/response"
 
 	"github.com/gin-gonic/gin"
 )

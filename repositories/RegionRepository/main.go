@@ -1,7 +1,7 @@
 package RegionRepository
 
 import (
-	"go-core/models/RegionModel"
+	"golang-core/models/RegionModel"
 
 	"github.com/jinzhu/gorm"
 )

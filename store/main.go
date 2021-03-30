@@ -2,9 +2,9 @@ package store
 
 import (
 	"errors"
-	"go-core/database"
-	"go-core/repositories/RegionRepository"
-	"go-core/repositories/UserRepository"
+	"golang-core/database"
+	"golang-core/repositories/RegionRepository"
+	"golang-core/repositories/UserRepository"
 
 	"github.com/jinzhu/gorm"
 )

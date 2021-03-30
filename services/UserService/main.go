@@ -1,8 +1,8 @@
 package UserService
 
 import (
-	"go-core/models/UserModel"
-	"go-core/store"
+	"golang-core/models/UserModel"
+	"golang-core/store"
 )
 
 

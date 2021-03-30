@@ -1,7 +1,7 @@
 package pagination
 
 import (
-	"go-core/models/PaginationModel"
+	"golang-core/models/PaginationModel"
 
 	"github.com/gin-gonic/gin"
 )

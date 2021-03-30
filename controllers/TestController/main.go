@@ -2,7 +2,7 @@ package TestController
 
 import (
 	"ftp/utils/response"
-	"go-core/responseCodes"
+	"golang-core/responseCodes"
 
 	"github.com/gin-gonic/gin"
 )

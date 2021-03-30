@@ -1,7 +1,7 @@
 package response
 
 import (
-	"go-core/responseCodes"
+	"golang-core/responseCodes"
 
 	"github.com/gin-gonic/gin"
 )

@@ -1,8 +1,8 @@
 package RegionService
 
 import (
-	"go-core/models/RegionModel"
-	"go-core/store"
+	"golang-core/models/RegionModel"
+	"golang-core/store"
 )
 
 

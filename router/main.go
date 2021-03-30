@@ -1,11 +1,11 @@
 package router
 
 import (
-	"go-core/controllers/RegionsController"
-	"go-core/controllers/TestController"
-	"go-core/controllers/UsersController"
-	"go-core/responseCodes"
-	"go-core/utils/response"
+	"golang-core/controllers/RegionsController"
+	"golang-core/controllers/TestController"
+	"golang-core/controllers/UsersController"
+	"golang-core/responseCodes"
+	"golang-core/utils/response"
 
 	"github.com/gin-gonic/gin"
 )

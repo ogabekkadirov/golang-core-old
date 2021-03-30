@@ -1,6 +1,6 @@
 package UserModel
 
-import "go-core/models/RegionModel"
+import "golang-core/models/RegionModel"
 
 type User struct {
 	ID       uint   `json:"id"`

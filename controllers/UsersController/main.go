@@ -1,9 +1,9 @@
 package UsersController
 
 import (
-	"go-core/responseCodes"
-	"go-core/services/UserService"
-	"go-core/utils/response"
+	"golang-core/responseCodes"
+	"golang-core/services/UserService"
+	"golang-core/utils/response"
 
 	"github.com/gin-gonic/gin"
 )

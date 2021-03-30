@@ -1,7 +1,7 @@
 package UserRepository
 
 import (
-	"go-core/models/UserModel"
+	"golang-core/models/UserModel"
 
 	"github.com/jinzhu/gorm"
 )

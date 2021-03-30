@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"go-core/database"
-	"go-core/router"
+	"golang-core/database"
+	"golang-core/router"
 	"log"
 	"os"
 
