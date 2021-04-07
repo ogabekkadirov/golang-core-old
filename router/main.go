@@ -26,6 +26,10 @@ func Init() *gin.Engine {
 		{
 			usersRouter.GET("/", UsersController.Index)
 		}
+		authRouter := v1.Group("auth")
+		{
+			authRouter.POST("/login", UsersController.Login)
+		}
 		regionsRouter := v1.Group("/regions")
 		{
 			regionsRouter.GET("/", RegionsController.Index)

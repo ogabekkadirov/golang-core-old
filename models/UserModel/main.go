@@ -1,11 +1,21 @@
 package UserModel
 
-import "golang-core/models/RegionModel"
+import (
+	"golang-core/models/RoleModel"
+)
+
 
 type User struct {
 	ID       uint   `json:"id"`
-	Login    string `json:"login"`
+	Username string `json:"login"`
 	Fullname string `json:"fullname"`
-	RegionID uint   `json:"region_id"`
-	Region   RegionModel.Region `gorm:"forignkey:RegionID"` 
+	Password []byte `json:"-"`
+	RoleID 	uint   `json:"role_id"`
+	Role   RoleModel.Role `gorm:"forignkey:RoleID"` 
 }
+
+type Credentials struct {
+	Password string `json:"password"`
+	Username string `json:"username"`
+}
+
