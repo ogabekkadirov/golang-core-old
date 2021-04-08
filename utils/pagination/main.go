@@ -6,8 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func setPagination(ctx *gin.Context) (pagination *PaginationModel.Pagination) {
 
-func setPagination(ctx *gin.Context)(pagination *PaginationModel.Pagination){
-	
 	return
 }

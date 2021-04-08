@@ -10,7 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-
 func Init() *gin.Engine {
 	router := gin.Default()
 	router.GET("ping", func(ctx *gin.Context) {
@@ -20,7 +19,7 @@ func Init() *gin.Engine {
 	{
 		testRouter := v1.Group("/test")
 		{
-			testRouter.GET("get-test",TestController.Intex)
+			testRouter.GET("get-test", TestController.Intex)
 		}
 		usersRouter := v1.Group("/users")
 		{

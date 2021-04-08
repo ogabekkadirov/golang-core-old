@@ -6,20 +6,19 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-
-func SuccessResult(ctx *gin.Context, httpStatus int, result interface{})(mapResult map[string]interface{}){
+func SuccessResult(ctx *gin.Context, httpStatus int, result interface{}) (mapResult map[string]interface{}) {
 
 	mapResult = make(map[string]interface{})
 	mapResult["success"] = true
 	mapResult["message"] = "ok"
 	mapResult["result"] = result
 	mapResult["status"] = httpStatus
-	
+
 	ctx.JSON(httpStatus, mapResult)
 	return
 }
 
-func ErrorResult(ctx *gin.Context, httpStatus int)(mapResult map[string]interface{}){
+func ErrorResult(ctx *gin.Context, httpStatus int) (mapResult map[string]interface{}) {
 
 	mapResult = make(map[string]interface{})
 	mapResult["success"] = false

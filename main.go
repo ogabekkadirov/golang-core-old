@@ -10,13 +10,12 @@ import (
 	"github.com/joho/godotenv"
 )
 
-
 func main() {
 	InitEnv()
 	database.Init()
 	port := os.Getenv("PORT")
 	handler := router.Init()
-	_=handler.Run(port)
+	_ = handler.Run(port)
 	fmt.Println(port)
 }
 
