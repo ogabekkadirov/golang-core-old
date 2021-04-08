@@ -14,6 +14,9 @@ type User struct {
 	Role   RoleModel.Role `gorm:"forignkey:RoleID"` 
 }
 
+type UsersList struct{
+	Users []User `json:"users"`
+}
 type Credentials struct {
 	Password string `json:"password"`
 	Username string `json:"username"`
