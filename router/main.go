@@ -1,6 +1,7 @@
 package router
 
 import (
+	"golang-core/controllers/AuthController"
 	"golang-core/controllers/RegionsController"
 	"golang-core/controllers/TestController"
 	"golang-core/controllers/UsersController"
@@ -24,10 +25,11 @@ func Init() *gin.Engine {
 		usersRouter := v1.Group("/users")
 		{
 			usersRouter.GET("/", UsersController.Index)
+			usersRouter.GET("/:id", UsersController.Show)
 		}
-		authRouter := v1.Group("auth")
+		authRouter := v1.Group("/auth")
 		{
-			authRouter.POST("/login", UsersController.Login)
+			authRouter.POST("login", AuthController.Login)
 		}
 		regionsRouter := v1.Group("/regions")
 		{

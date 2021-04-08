@@ -2,59 +2,60 @@ package UserRepository
 
 import (
 	"errors"
-	"fmt"
+	"golang-core/models/PaginationModel"
 	"golang-core/models/UserModel"
+	"golang-core/repositories/BaseRepository"
 	"golang-core/responseCodes"
-	"golang-core/utils/gcjwt"
 
 	"github.com/jinzhu/gorm"
-	"golang.org/x/crypto/bcrypt"
 )
 
-
-func NewUserRepository(db *gorm.DB)*UsersRepository{
-	return &UsersRepository{db:db}
+func NewUserRepository(db *gorm.DB) *UsersRepository {
+	return &UsersRepository{db: db, BaseRepository: BaseRepository.NewBaseRepository()}
 }
 
 type UsersRepository struct {
-	db *gorm.DB
+	db             *gorm.DB
+	BaseRepository *BaseRepository.BaseRepository
 }
 
-func(repo UsersRepository)GetAll()(data []UserModel.User,err error){
+func (repo UsersRepository) GetAll(pagination PaginationModel.Pagination) (result map[string]interface{}, err error) {
+
+	dbQuery := repo.db.Table("users")
+
 	loads := []string{"Role"}
-	result := repo.db
-	for _,s := range loads{
-		result = result.Preload(s)
+
+	var total int64
+
+	dbQuery.Count(&total)
+
+	resultBody := []UserModel.User{}
+
+	dbQuery = repo.BaseRepository.Peload(dbQuery, loads)
+
+	repo.BaseRepository.Paginate(dbQuery, pagination).Find(&resultBody)
+
+	result = map[string]interface{}{
+		"data":       resultBody,
+		"pagination": pagination,
+		"total":      total,
 	}
-	result.Find(&data)
-	err = result.Error
+
 	return
 }
+func (repo UsersRepository) Get(id uint) (result UserModel.User, err error) {
 
-func(repo UsersRepository)Login(credentials UserModel.Credentials)(data map[string]interface{}, err error){
+	loads := []string{"Role"}
 
-	user := &UserModel.User{}
+	dbQuery := repo.db.Where("id = ?", id)
 
-	repo.db.Where("username = ?", credentials.Username).First(&user)
-	
-	if user.ID == 0 {
+	dbQuery = repo.BaseRepository.Peload(dbQuery, loads)
+
+	dbQuery.First(&result)
+
+	if result.ID == 0 {
 		err = errors.New(string(responseCodes.StatusNotFound))
 		return
 	}
-
-	if err = bcrypt.CompareHashAndPassword(user.Password, []byte(credentials.Password)); err != nil{
-		return
-	}
-	fmt.Println(user)
-	token,tokenErr := gcjwt.CreateToken(*user)
-
-	if tokenErr != nil {
-		err = tokenErr
-		return 
-	}
-
-	data = make(map[string]interface{})
-	data["access_token"]=token
-
-	return 
-}	
+	return
+}
